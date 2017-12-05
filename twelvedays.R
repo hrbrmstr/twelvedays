@@ -171,13 +171,15 @@ group_by(day_items, item) %>%
   mutate(item_cum = cumsum(amount)) %>%
   ungroup() -> day_item_sums
 
+colrs <- set_names(swatch(xmas)[[1]][c(1,3,5)], c("Birds", "People", "Things"))
+
 #+ daily_item_count
 mutate(day_item_sums, item = factor(item, levels=rev(unique(item)))) %>%
   ggplot(aes(x=day, y=item_cum, group=item, fill=category)) +
   geom_col(position="stack", color="#2b2b2b", size=0.25) +
   scale_x_comma(limits=c(0, 13), breaks=1:12) +
   scale_y_continuous(expand=c(0,0.5)) +
-  scale_fill_manual(values=swatch(xmas)[[1]][c(1,3,5)]) +
+  scale_fill_manual(values=colrs) +
   labs(x="Day", y="# Items", title="Daily item count exchanged") +
   theme_ipsum_rc(grid="Y", axis="x")
 
@@ -194,7 +196,7 @@ count(day_items, day, category, wt=amount) %>%
   geom_col(position="stack", color="#2b2b2b", size=0.25) +
   scale_x_comma(limits=c(0, 13), breaks=1:12) +
   scale_y_continuous(expand=c(0,0.5)) +
-  scale_fill_manual(values=swatch(xmas)[[1]][c(1,3,5)]) +
+  scale_fill_manual(values=colrs) +
   labs(x="Day", y="# Items", title="Daily item count exchanged (by category)") +
   theme_ipsum_rc(grid="Y", axis="x")
 
@@ -273,8 +275,8 @@ mutate(annual_item_costs, item_display_name = factor(item_display_name, unique(i
   geom_point(size=0.1) +
   scale_x_date(expand=c(0,0)) +
   scale_y_continuous(label=scales::dollar) +
-  scale_color_manual(values=swatch(xmas)[[1]][c(1,3,5)], guide=FALSE) +
-  scale_fill_manual(values=swatch(xmas)[[1]][c(1,3,5)], guide=FALSE) +
+  scale_color_manual(values=colrs, guide=FALSE) +
+  scale_fill_manual(values=colrs, guide=FALSE) +
   facet_wrap(~item_display_name, scales="free") +
   labs(x=NULL, y="Item cost",
        title="The PNC Christmas Price Index Through the Years",
