@@ -334,3 +334,5 @@ count(day_item_cost, day, wt=item_total) %>%
 count(day_item_cost, wt=item_total)
 
 #' Needless to say, @mrshrbrmstr will be getting something else for Christmas this year.
+#'
+#' You can find the entire project folder [on GitHub](https://github.com/hrbrmstr/twelvedays)
