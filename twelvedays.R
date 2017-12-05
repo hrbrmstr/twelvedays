@@ -17,7 +17,7 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, dev="png",
 #' ## The Mission
 
 #' I'm in the market for Christmas presents for my true love, @mrshrbrmstr, and
-#' thought I'd look to an age-old shopping list for inspriation. Just what would
+#' thought I'd look to an age-old shopping list for inspiration Just what would
 #' it set me back if I decided to mimic the 12 Days of Christmas in this modern
 #' day and age?
 #'
